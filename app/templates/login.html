@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block link %}
+
+	 <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+	 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
+
+{% endblock link %}
+
+{% block title %}Login{% endblock %}
+
+      {% block dist %}
+
+      {% endblock %}
+
+{% block main %}
+
+<style type="text/css">
+
+	label{
+		color:#fff;
+	}
+	.pass{
+		color:#000;
+	}
+
+#form_login {
+    left: 50%;
+    top: 50%;
+    position:absolute;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    -moz-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+}
+
+#form_signup {
+    left: 40%;
+    top: 50%;
+    position:absolute;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    -moz-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+}
+
+</style>
+
+<br>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+
+			<div class="parent">
+
+			<div class="child" id=log>
+			<form id="form_login" action="/login" method="POST">
+				<h2 class="form-signin-heading">Please Log in</h2>
+
+				{{ form.hidden_tag()}}
+				{{ wtf.form_field(form.username) }}
+				{{ wtf.form_field(form.password) }}
+				{{ wtf.form_field(form.remember) }}
+
+
+				<br>
+				<button type="submit" class="btn btn-primary">Log in</button>
+
+			</form>
+		</div>
+
+<!-- 		<div class="child" id="signup" style="opacity: 0;">
+
+			<form id="form_signup" action="/signup" method="POST">
+				<h2 class="form-signin-heading">Please Sign up</h2>
+
+				{{ form.hidden_tag()}}
+				{{ wtf.form_field(form.username) }}
+				{{ wtf.form_field(form.email) }}
+				{{ wtf.form_field(form.password) }}
+				{{ wtf.form_field(form.remember) }}
+
+
+				<br>
+				<button type="submit" class="btn btn-primary">Sign up</button>
+
+			</form>
+
+		</div> -->
+
+		</div>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+<style type="text/css">
+.parent {
+
+  position: absolute;
+  left: 5%;
+  right:5%;
+  display: flex;
+  justify-content: center;
+  top:50%;
+}
+.child
+{
+  position: relative;
+  display: inline-block;
+  border-style:solid;
+  border-width:1px;  
+  border-color:#fff;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 2px;
+  margin-left: 2px;
+  height:500px;
+  width:1000px;
+  left:0%;
+}
+
+/*nav{
+	z-index: 10000 !important;
+}*/
+</style>
+
+<!-- <script type="text/javascript">
+	  
+$(document).ready(function() {
+        $('#btn-signup').click(function(){
+           $('#signup').css({'opacity':'1'});
+           $('#log').css({'opacity':'0'});
+
+    });
+
+   });
+
+</script> -->
+<!-- <style type="text/css">
+#signup
+{
+	display:inline-block; 
+	opacity: 0.0;
+    filter: alpha(opacity=20);
+}
+</style> -->
+{% endblock %}

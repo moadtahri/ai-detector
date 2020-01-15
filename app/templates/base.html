@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+    <!-- Custom css -->
+    {% block link %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='particles-js.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<!--   <link rel="stylesheet" href="http://jquery-ui.min.css">
+ -->  <!--  -->
+
+<!-- jquery -->
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+<!-- popper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <!--  -->
+
+  <!-- boostrap js -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <!--  -->
+
+    <!-- Bootstrap CSS -->
+      <!-- Load plotly.js into the DOM -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.js"></script> -->
+
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <body class="bg-light">
+
+   <div id="page-container">
+    <div id="content-wrap">
+    <!-- particles animation -->
+ <div id="particles-js"></div>
+<br>
+<header>
+  <div class="logo">
+
+    <img src="static/Watson_logo.png">
+  </div>
+  <nav style="z-index: 1000;">
+        <ul>
+<!--       <li id="btn-signup"><a href="{{ url_for('signup') }}">Sign Up</a></li>
+      <li id="btn-login"><a href=" {{ url_for('login') }}">Login</a></li> -->
+      {% block dist %}{% endblock %}
+      <li class="active"><a href="{{ url_for('home_page') }}">Home</a></li>
+      <!-- <li><a href="#">Service</a></li> -->
+      <li><a href="https://developer.ibm.com/digitalnation/africa/">IBM Digital -Nation Africa</a></li>
+      <!-- <li><a href="#">About</a></li> -->
+      <li><a href="https://www.linkedin.com/in/tahrimoad/">Contact</a></li>
+    </ul>
+  </nav>
+  </header>
+
+    <main>
+      {% block main %} {% endblock %}
+    </main>
+
+    
+     <!-- footer -->
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"
+        crossorigin="anonymous"></script>
+      <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+          event.preventDefault();
+          $(this).ekkoLightbox();
+        });
+      </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='particles.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+</div>
+        <style type="text/css">
+      #page-container {
+        position: relative;
+        min-height: 100vh;
+
+      }
+
+      #content-wrap {
+        padding-bottom: 2.5rem;    /* Footer height */
+      }
+
+      #footer {
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        height: 2.5rem;            /* Footer height */
+      }
+    </style>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small" id="footer">
+        <p class="mb-1" style="text-align: center; color: white;">&copy; 2020 IBM Maroc</p>
+        <div class="d-flex">
+        <ul class="list-inline mx-auto justify-content-center">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+       </div>
+     </footer>
+
+    </div>
+  </body>
+</html>

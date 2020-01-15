@@ -1,0 +1,284 @@
+
+  {% extends "base.html" %} 
+
+  {% block link %}
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='particles-js.css') }}">
+   <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+
+
+  {% endblock link %}
+
+  {% block title %}Results{% endblock title %}
+
+  {% block dist %}<li><a href="{{ url_for('load_page_2') }}">Return</a></li>{% endblock%}
+  <div id="particles-js"></div>
+  {% block main %} 
+      <!-- <h1>{{ i_max }}</h1> -->
+      <!-- particles animation -->
+  <style>
+    .selector-for-some-widget
+    {
+    box-sizing: content-box;
+    }
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .container {
+      max-width: 960px;
+    }
+
+    .lh-condensed {
+      line-height: 1.25;
+    }
+    .container {
+      
+    z-index:1;
+  }
+  h1
+  {
+
+  }
+  </style>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+        <div class="py-5 text-center">
+            <br>
+          <h1>ID Type Results</h1>
+        </div>
+<!--        {% autoescape false %}
+       {% if cin_front_img %}
+
+        <a href="{{ cin_front_img }}" data-toggle="lightbox" data-gallery="example-gallery" class="col-md-3"><img src="{{ cin_front_img }}" class="img-fluid"></a>
+
+       {% endif %}
+      
+      {% endautoescape %} -->
+
+
+              <!-- D3.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+      
+    <div class="images">
+
+
+
+      <script type="text/javascript">
+        
+        var i = {{i_max}}
+
+        if (i == 0){
+
+          $(document).ready(function() {
+            $('#i_0').css({'animation':'blinker 1s linear infinite','color':'red', 'font-weight':'bold'});
+            });
+
+          }
+
+        if(i == 1){
+
+          $(document).ready(function() {
+            $('#i_1').css({'animation':'blinker 1s linear infinite','color':'red', 'font-weight':'bold'});
+            });
+        }
+
+        if ( i == 2 ){
+
+          $(document).ready(function() {
+            $('#i_2').css({'animation':'blinker 1s linear infinite','color':'red', 'font-weight':'bold'});
+            });
+
+        }
+
+
+      </script>
+
+      <style type="text/css">
+        
+        @keyframes blinker {
+                    50% {
+                      opacity: 0;
+                    }
+                  }
+
+      </style>
+
+
+    <div class="green" id="imax_0">
+   <div><p id="i_0">CIN Front</p></div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+      <div class="chart" id="bargraph">
+      <script>
+
+      var data = [
+        {
+            type: "indicator",
+            mode: "gauge+number+delta",
+            domain: { x: [0, 1], y: [0, 1] },
+            value: {{msg[0]}}*100,
+            title: { text: "CIN Front", font:{size:24}},
+            delta: { reference: 95, increading:{ color: "RebeccaPurple"} },
+            gauge: { 
+              axis: { range: [null, 100], tickwidth: 1, tickcolor: "darkblue"}, 
+              bar: { color: "darkblue" },
+              steps: [
+                { range: [0, 50], color: "cyan" },
+                { range: [50, 95], color: "royalblue" }
+              ],
+              threshold: {
+                line: { color: "red", width: 4 },
+                thickness: 0.75,
+                value: 95
+            }
+          }
+
+          }
+        ];
+      var layout = { width: 400, height: 300, margin: { t: 0, b: 0 }, paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)', font: { color: "white", family: "Arial"}};
+      Plotly.newPlot('bargraph', data, layout);
+
+      </script>
+      </div>
+    
+    </div>
+
+    <div class="green" id="imax_1">
+
+
+
+<!--     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
+     <div ><p id="i_1">CIN BACK</p></div>
+
+      <div class="chart" id="bargraph1">
+      <script>
+
+        var data = [
+          {
+            domain: { x: [0, 1], y: [0, 1] },
+            value: {{msg[1]}}*100,
+            title: {text: "CIN BACK"},
+            type: "indicator",
+            mode: "gauge+number+delta",
+            delta: { reference: 95 },
+            gauge: { 
+              axis: { range: [null, 100], tickwidth: 1, tickcolor: "darkblue"}, 
+              bar: { color: "darkblue" },
+              steps: [
+                { range: [0, 50], color: "cyan" },
+                { range: [50, 95], color: "royalblue" }
+              ],
+              threshold: {
+                line: { color: "red", width: 4 },
+                thickness: 0.75,
+                value: 95
+            }
+          }
+
+          }
+        ];
+        var layout = { width: 400, height: 300, margin: { t: 0, b: 0 }, paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)', font: { color: "white", family: "Arial" }};
+        Plotly.newPlot('bargraph1', data, layout);
+
+      </script>
+      </div>
+      
+    </div>
+
+    <div class="green" id="imax_2">
+
+      <div ><p id="i_2" style="color:#fff;text-align: center; ">PERMIS</p></div>
+
+      <div class="chart" id="bargraph2">
+
+      <script>
+
+        var data = [
+          {
+            domain: { x: [0, 1], y: [0, 1] },
+            value: {{msg[2]}}*100,
+            title: {text: "PERMIS"},
+            type: "indicator",
+            mode: "gauge+number+delta",
+            delta: { reference: 95 },
+            gauge: { 
+              axis: { range: [null, 100], tickwidth: 1, tickcolor: "darkblue"}, 
+              bar: { color: "darkblue" },
+              steps: [
+                { range: [0, 50], color: "cyan" },
+                { range: [50, 95], color: "royalblue" }
+              ],
+              threshold: {
+                line: { color: "red", width: 4 },
+                thickness: 0.75,
+                value: 95
+            }
+          }
+
+          }
+        ];
+        var layout = { width: 400, height: 300, margin: { t: 0, b: 0 }, paper_bgcolor:'rgba(0,0,0,0)', plot_bgcolor:'rgba(0,0,0,0)', font: { color: "white", family: "Arial" }};
+        Plotly.newPlot('bargraph2', data, layout);
+
+      </script>
+
+      </div>
+    
+    </div>
+
+</div>
+
+<style >
+.images {
+
+  position: absolute;
+  left: 10%;
+  right:10%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.green
+{
+  position: relative;
+  display: inline-block;
+  border-style:solid;
+  border-width:1px;  
+  border-color:#fff;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+
+
+</style>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"
+        crossorigin="anonymous"></script>
+      <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+          event.preventDefault();
+          $(this).ekkoLightbox();
+        });
+      </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='particles.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+  <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+{% endblock main %}
