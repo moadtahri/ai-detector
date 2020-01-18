@@ -7,6 +7,9 @@ import json
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
+cf_port = os.getenv("PORT")
+
+
 visual_recognition = VisualRecognitionV3(#class of watson_developer_cloud constructor class of visual recognition take credential to estazblish connection with watson
 
     version ='2019-10-23',
@@ -37,4 +40,8 @@ def get_cl(path_to_img):#get classifier return table of
 
 app.config.from_pyfile('config.py')
 if __name__ == '__main__':
-    app.run(debug = True)
+    # app.run(debug = True)
+  if cf_port is None:
+    app.run(host='0.0.0.0', port=5000, debug=False)
+  else:
+    app.run(host='0.0.0.0', port=int(cf_port), debug=False)

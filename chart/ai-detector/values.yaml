@@ -3,7 +3,7 @@
 replicaCount: 1
 revisionHistoryLimit: 1
 image:
-  repository: icr.io/replace-me-namespace/chestxraydetector
+  repository: icr.io/replace-me-namespace/ai-detector
   tag: v1.0.0
   pullPolicy: Always
   resources:

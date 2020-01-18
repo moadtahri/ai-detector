@@ -2,11 +2,11 @@
 applications:
 - 
   buildpack: python_buildpack
-  command: flask run
+  command: python run.py
   env:
     FLASK_APP : server
     FLASK_DEBUG : false
   instance: 1
   memory: 256M
-  name: chestxraydetector
+  name: ai-detector
   random-route: true
